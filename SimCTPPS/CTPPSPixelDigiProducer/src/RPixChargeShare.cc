@@ -118,7 +118,7 @@ std::map<unsigned short, double, std::less<unsigned short> >  RPixChargeShare::S
 	      }
 	    }
 	    double chargetransfereff = (1-collect_prob)*signalCoupling_[0];
-	    std::cout << "chargetransfereff : " << chargetransfereff << " " << 1-collect_prob << " "<< signalCoupling_[0]<< std::endl;
+//	    std::cout << "chargetransfereff : " << chargetransfereff << " " << 1-collect_prob << " "<< signalCoupling_[0]<< std::endl;
 	    thePixelChargeMap[closer_no] += charge_in_pixel*chargetransfereff;
 
 //	  thePixelChargeMap[pixel_no] += charge_in_pixel*(1-chargetransfereff);
@@ -129,9 +129,9 @@ std::map<unsigned short, double, std::less<unsigned short> >  RPixChargeShare::S
 
   double CHS=0;
   for(auto &IO: thePixelChargeMap){
-    std::cout << "carica nella mappa post sharing  "<<IO.second << std::endl;
+//    std::cout << "carica nella mappa post sharing  "<<IO.second << std::endl;
     CHS += IO.second;
   }
-  std::cout << "carica TOTALE post sharing  "<<CHS << std::endl;
+//  std::cout << "carica TOTALE post sharing  "<<CHS << std::endl;
   return thePixelChargeMap;
 }

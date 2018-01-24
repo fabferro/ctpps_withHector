@@ -36,8 +36,8 @@ void RPixDummyROCSimulator::ConvertChargeToHits(const std::map<unsigned short, d
     {
     //one threshold per hybrid
       unsigned short pixel_no = i->first;   // questo dovrebbe essere il PixelIndex di CTPPSPixelSimTopology.h (col*160+row)
-      std::cout << " --------------------------------------- threshold " << threshold_ << std::endl;
-      if(verbosity_)std::cout << "Dummy ROC adc and threshold : "<< i->second << ", " << threshold_ << std::endl; 
+    ///    std::cout << " --------------------------------------- threshold " << threshold_ << std::endl;
+    ///   if(verbosity_)std::cout << "Dummy ROC adc and threshold : "<< i->second << ", " << threshold_ << std::endl; 
       if(i->second > threshold_ && (!dead_pixels_simulation_on_ 
 				    || dead_pixels_.find(pixel_no)==dead_pixels_.end() ))
 	{
@@ -46,7 +46,7 @@ void RPixDummyROCSimulator::ConvertChargeToHits(const std::map<unsigned short, d
 	  int row = pixel_no % 160;
 	  int adc = int(round(i->second / electron_per_adc_));
 
-	  std::cout << "------- RPixDummyROC -- charge, e_per_adc, adc " << i->second << ", "<< electron_per_adc_ << ", " << adc << std::endl;
+///	  std::cout << "------- RPixDummyROC -- charge, e_per_adc, adc " << i->second << ", "<< electron_per_adc_ << ", " << adc << std::endl;
 
 /// set maximum for 8 bits adc
 	  if (adc >=255) adc=255;

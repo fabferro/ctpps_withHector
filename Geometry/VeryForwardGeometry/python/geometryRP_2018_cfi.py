@@ -74,8 +74,8 @@ totemGeomXMLFiles = cms.vstring(
     'Geometry/VeryForwardData/data/RP_Horizontal_Device.xml',
     'Geometry/VeryForwardData/data/RP_220_Right_Station.xml',
     'Geometry/VeryForwardData/data/RP_220_Left_Station.xml',
-    'Geometry/VeryForwardData/data/RP_147_Right_Station.xml',
-    'Geometry/VeryForwardData/data/RP_147_Left_Station.xml',
+    'Geometry/VeryForwardData/data/2018/RP_147_Right_Station.xml',
+    'Geometry/VeryForwardData/data/2018/RP_147_Left_Station.xml',
     'Geometry/VeryForwardData/data/RP_Stations_Assembly.xml',
     'Geometry/VeryForwardData/data/RP_Sensitive_Dets.xml',
     'Geometry/VeryForwardData/data/RP_Cuts_Per_Region.xml',
@@ -131,8 +131,8 @@ ctppsPixelGeomXMLFiles = cms.vstring(
     'Geometry/VeryForwardData/data/CTPPS_Pixel_Module_2x2.xml',
     'Geometry/VeryForwardData/data/CTPPS_Pixel_Assembly_Box_Real_023.xml',
     'Geometry/VeryForwardData/data/CTPPS_Pixel_Assembly_Box_Real_123.xml',
-    'Geometry/VeryForwardData/data/CTPPS_Pixel_Assembly_Box_Real_003_2018.xml',
-    'Geometry/VeryForwardData/data/CTPPS_Pixel_Assembly_Box_Real_103_2018.xml',
+    'Geometry/VeryForwardData/data/2018/CTPPS_Pixel_Assembly_Box_Real_003.xml',
+    'Geometry/VeryForwardData/data/2018/CTPPS_Pixel_Assembly_Box_Real_103.xml',
     'Geometry/VeryForwardData/data/CTPPS_Pixel_Sens.xml'
 )
 

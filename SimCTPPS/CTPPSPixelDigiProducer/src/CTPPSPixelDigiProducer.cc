@@ -72,7 +72,7 @@ void CTPPSPixelDigiProducer::produce(edm::Event& iEvent, const edm::EventSetup& 
 
     std::auto_ptr<MixCollection<PSimHit> > col(
 					       new MixCollection<PSimHit> (cf.product(), std::pair<int, int>(-0, 0)));
-    std::cout << *(col.get()) << std::endl;
+  ///   std::cout << *(col.get()) << std::endl;
     MixCollection<PSimHit>::iterator cfi;
     int count = 0;
     for (cfi = col->begin(); cfi != col->end(); cfi++) {

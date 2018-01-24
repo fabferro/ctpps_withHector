@@ -69,7 +69,7 @@ void CTPPSPixelDigiToRaw::produce( edm::Event& ev,
   }
   allDigiCounter += digiCounter;
    edm::ESHandle<CTPPSPixelDAQMapping> mapping;
-  if (recordWatcher.check( es )) {
+//  if (recordWatcher.check( es )) {
     //es.get<CTPPSPixelDAQMappingRcd>().get(mapping);
     es.get<CTPPSPixelDAQMappingRcd>().get("RPix",mapping);
     for (const auto &p : mapping->ROCMapping)    {
@@ -77,7 +77,7 @@ void CTPPSPixelDigiToRaw::produce( edm::Event& ev,
         short unsigned int pROC   = p.second.roc;
         short unsigned int pFediD = p.first.getFEDId();
         short unsigned int pFedcH = p.first.getChannelIdx();
-	 
+	edm::LogInfo("-----------------------------------------------------------+- ") << " id roc, fed ch = " << piD << " "<< pROC << " "<< pFediD << " "<< pFedcH  ;
 	std::map<const uint32_t,short unsigned int> mapDetRoc; 
         mapDetRoc.insert(std::pair<const uint32_t,short unsigned int>(piD,pROC)); 
 	std::map<short unsigned int,short unsigned int> mapFedIdCh; 
@@ -86,7 +86,7 @@ void CTPPSPixelDigiToRaw::produce( edm::Event& ev,
 	iDdet2fed_.insert(std::pair<std::map<const uint32_t,short unsigned int> ,std::map<short unsigned int,short unsigned int>>(mapDetRoc,mapFedIdCh));
     }
     fedIds_ = mapping->fedIds();
-  }
+//  }
   //debug = edm::MessageDrop::instance()->debugEnabled;
 
 

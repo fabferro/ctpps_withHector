@@ -21,11 +21,16 @@ process.load('Configuration.StandardSequences.CTPPSDigiToRaw_cff')
 process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 ############### using only CTPPS geometry 
-#process.load("Configuration.Geometry.geometry_CTPPS_cfi")
-process.load("CondFormats.CTPPSReadoutObjects.CTPPSPixelDAQMappingESSourceXML_cfi")
+process.load("Configuration.Geometry.geometry_CTPPS_2018_cfi")
+#process.load("Geometry.VeryForwardGeometry.geometry_CTPPS_2018_cfi")
+#process.load("CondFormats.CTPPSReadoutObjects.CTPPSPixelDAQMappingESSourceXML_cfi")
 
 process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(-1)
+)
+process.MessageLogger = cms.Service("MessageLogger",
+    destinations = cms.untracked.vstring('cclu_info'),
+    cclu_info = cms.untracked.PSet( threshold = cms.untracked.string('INFO'))
 )
 
 process.load("IOMC.RandomEngine.IOMC_cff")
@@ -92,6 +97,36 @@ process.load("SimCTPPS.CTPPSPixelDigiProducer.RPixDetConf_cfi")
 # Other statements
 from Configuration.AlCa.GlobalTag import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:run2_hlt_relval', '')
+process.GlobalTag.toGet = cms.VPSet(
+    cms.PSet(record = cms.string("CTPPSPixelDAQMappingRcd"),
+             tag = cms.string("PixelDAQMapping"),
+             label = cms.untracked.string("RPix"),
+             connect = cms.string("sqlite_file:./myCTPPSPixel_DAQMapping_AnalysisMask.db")
+             )
+    )
+
+#from CondCore.CondDB.CondDB_cfi import *
+#process.PoolDBESSource = cms.ESSource("PoolDBESSource",
+#                                      CondDB.clone(
+#        connect = cms.string('sqlite_file:CTPPSPixel_DAQMapping_Jan23rd2018_3.db')),
+#                                      toGet = cms.VPSet(
+#        cms.PSet(
+#            record = cms.string('CTPPSPixelDAQMappingRcd'),
+#            tag = cms.string("PixelDAQMapping"),
+##            label = cms.untracked.string("RPix")
+#            ),
+#        cms.PSet(
+#            record = cms.string('CTPPSPixelAnalysisMaskRcd'),
+#            tag = cms.string("PixelAnalysisMask"),
+##            label = cms.untracked.string("RPix")
+#            ),
+#               cms.PSet(
+#            record = cms.string('CTPPSPixelGainCalibrationsRcd'),
+#            tag = cms.string("CTPPSPixelGainCalibNew_v4"),
+#            )
+#        )
+#                                 )
+
 
 # Path and EndPath definitions
 process.mixedigi_step = cms.Path(process.mix*process.RPixDetDigitizer)

@@ -120,6 +120,7 @@ void CTPPSPixelDataFormatter::interpretRawData(  bool& errorsInEvent, int fedId,
 
     int convroc = nroc-1;
     CTPPSPixelFramePosition fPos(fedId, FMC, nlink, convroc);
+    edm::LogInfo("CTPPSPixelDataFormatter:interpreting") << " fedId, FMC, nlink, convroc " << fedId<< " " << FMC<< " " << nlink<< " " << convroc;
     std::map<CTPPSPixelFramePosition, CTPPSPixelROCInfo>::const_iterator mit;
     mit = mapping_.find(fPos);
 
@@ -230,6 +231,7 @@ Digis & digis, std::map<std::map<const uint32_t,short unsigned int>, std::map<sh
                              | (cabling.dcol << m_DCOL_shift)
                              | (cabling.pxid << m_PXID_shift)
                              | (digi.adc() << m_ADC_shift);
+		      edm::LogInfo("CTPPSPixelDataFormatter:formatting") << " fedId, FMC, nlink, convroc " << matchfedId<< " " << 0<< " " << cabling.link<< " " << cabling.roc << " " << cabling.dcol <<" "<<cabling.pxid ;
                       words[matchfedId].push_back(word);
                       theWordCounter++;
                    }
